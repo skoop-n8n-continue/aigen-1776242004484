@@ -1,0 +1,184 @@
+:root {
+    --primary: #00b7af;
+    --bg-dark: #10181f;
+    --text-white: #ffffff;
+    --text-gray: #6a7071;
+    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-image: linear-gradient(rgba(16, 24, 31, 0.85), rgba(16, 24, 31, 0.85)), url('https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776242004484%2Fassets%2Fcalendar_bg-1776242169272.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+    padding: 3rem;
+}
+
+/* Left Section: Time & Date */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid rgba(106, 112, 113, 0.3);
+    padding-right: 2rem;
+}
+
+#clock {
+    font-size: 8rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+#date {
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--text-white);
+    margin-bottom: 2rem;
+}
+
+.upcoming-container {
+    margin-top: 2rem;
+}
+
+.upcoming-title {
+    font-size: 1.2rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+}
+
+.event-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+}
+
+.event-time {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-right: 1.5rem;
+    min-width: 80px;
+}
+
+.event-details h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+.event-details p {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+}
+
+/* Right Section: Calendar */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+#month-year {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+
+.day-header {
+    text-align: center;
+    font-weight: 600;
+    color: var(--text-gray);
+    padding: 1rem 0;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.day.today {
+    background-color: var(--primary);
+    color: var(--bg-dark);
+    font-weight: 700;
+}
+
+.day.other-month {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+/* Ticker at the bottom */
+.ticker-wrap {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.8rem 0;
+    overflow: hidden;
+}
+
+.ticker {
+    display: inline-block;
+    white-space: nowrap;
+    padding-right: 100%;
+    animation: ticker 30s linear infinite;
+}
+
+.ticker-item {
+    display: inline-block;
+    padding: 0 2rem;
+    font-size: 1.1rem;
+    color: var(--primary);
+}
+
+@keyframes ticker {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
+
+/* Responsiveness for signage */
+@media (max-width: 1200px) {
+    #clock { font-size: 6rem; }
+    #date { font-size: 2rem; }
+}
